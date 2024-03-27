@@ -19,6 +19,14 @@ export default defineConfig({
   base: '/vd-player/',
   build: {
     outDir: '../../gh-pages',
-    emptyOutDir: true
+    emptyOutDir: true,
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: '[name].[ext]'
+      }
+    }
   }
 });
