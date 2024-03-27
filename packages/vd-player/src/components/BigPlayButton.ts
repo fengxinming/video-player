@@ -17,7 +17,12 @@ export class BigPlayButton extends PlayToggle {
   play() {
     const { player } = this;
     if (!player.hasStarted) {
-      player.play(true);
+      if (player.source) {
+        player.start();
+      }
+      else {
+        player.emit({ type: 'error', error: new Error('No source specified.') });
+      }
     }
   }
 }

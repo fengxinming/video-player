@@ -1048,9 +1048,6 @@ export class Player extends Component<PlayerFixedOptions> implements IPlayer {
   }
 
   set source(val: TPlaySource) {
-    if (!val) {
-      throw new Error('Invalid source specified.');
-    }
     this.opts.source = val;
   }
 
@@ -1163,16 +1160,6 @@ export class Player extends Component<PlayerFixedOptions> implements IPlayer {
     return (parentEl);
   }
 
-  unmount() {
-    const { el } = this;
-    const { parentNode } = el;
-    if (parentNode) {
-      parentNode.removeChild(el);
-    }
-
-    return parentNode;
-  }
-
   pause(): Promise<void> {
     const { tech } = this;
     if (tech) {
@@ -1189,23 +1176,10 @@ export class Player extends Component<PlayerFixedOptions> implements IPlayer {
     return Promise.resolve();
   }
 
-  play(source?: TPlaySource | boolean): Promise<void> {
+  play(): Promise<void> {
     return makeActionPromise(this, 'play', (resolve) => {
       // 传入新的source就重新加载
-      if (source) {
-        // true 表示重新加载
-        if (source === true) {
-          source = this.source;
-        }
-        else {
-          this.source = source;
-        }
-        this.stop()
-          .then(() => {
-            return this._controller.resolveSource(source as TPlaySource, true);
-          });
-      }
-      else if (!this.tech) {
+      if (!this.tech) {
         this._controller.resolveSource(this.source as TPlaySource, true);
       }
       else if (this.paused) {
@@ -1269,6 +1243,21 @@ export class Player extends Component<PlayerFixedOptions> implements IPlayer {
     });
   }
 
+  start(source?: TPlaySource): Promise<void> {
+    // 传入新的source就重新加载
+    if (source) {
+      this.source = source;
+    }
+    else {
+      source = this.source;
+    }
+
+    return this.stop()
+      .then(() => {
+        return this._controller.resolveSource(source as TPlaySource, true);
+      });
+  }
+
   stop(): Promise<void> {
     const { tech } = this;
     if (tech) {
@@ -1278,6 +1267,16 @@ export class Player extends Component<PlayerFixedOptions> implements IPlayer {
     }
 
     return Promise.resolve();
+  }
+
+  unmount() {
+    const { el } = this;
+    const { parentNode } = el;
+    if (parentNode) {
+      parentNode.removeChild(el);
+    }
+
+    return parentNode;
   }
 
   use(plugin: TPlayerPlugin, ...options: any[]) {

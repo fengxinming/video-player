@@ -2,7 +2,33 @@
   "hash": "f414fa76",
   "configHash": "615772ec",
   "lockfileHash": "e3b0c442",
-  "browserHash": "8d53fbf9",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "74c2f016",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "46e52a21",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "744bc187",
+      "needsInterop": true
+    },
+    "@alicloud/console-components": {
+      "src": "../../node_modules/@alicloud/console-components/esm/index.js",
+      "file": "@alicloud_console-components.js",
+      "fileHash": "3011fdd0",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-X7LKI4LM": {
+      "file": "chunk-X7LKI4LM.js"
+    },
+    "chunk-PNBVXEVG": {
+      "file": "chunk-PNBVXEVG.js"
+    }
+  }
 }

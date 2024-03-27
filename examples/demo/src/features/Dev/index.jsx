@@ -1,6 +1,6 @@
 
 import { Button, Form, Input, Radio } from '@alicloud/console-components';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useScope } from '@/commons/scope';
 import Video from '@/components/Video';
@@ -131,11 +131,20 @@ export default function () {
   } = useScope(defineScope);
 
   const play = () => {
-    videoRef.current.play({
-      src: formValue.url,
-      type: getSourceType(formValue.scheme, formValue.encoder)
-    });
+    videoRef.current.start();
   };
+
+  useEffect(() => {
+    if (formValue.url) {
+      videoRef.current.setSource({
+        src: formValue.url,
+        type: getSourceType(formValue.scheme, formValue.encoder)
+      });
+    }
+    else {
+      videoRef.current.setSource(null);
+    }
+  }, [formValue.encoder, formValue.scheme, formValue.url]);
 
   return (
     <div className={styles.layout}>
@@ -152,15 +161,15 @@ export default function () {
             value={formValue}
             onChange={onChangeForm}
           >
-            <Form.Item label="视频编码">
+            <Form.Item label="Video Coding">
               <Radio.Group name="encoder" dataSource={encoder} />
             </Form.Item>
             {formValue.encoder !== 'h265' && (
-              <Form.Item label="播放协议">
+              <Form.Item label="Video Format">
                 <Radio.Group name="scheme" dataSource={schemeOptions} />
               </Form.Item>
             )}
-            <Form.Item label="视频源">
+            <Form.Item label="Video Source">
               <Input.TextArea name="url" />
             </Form.Item>
             {
@@ -178,20 +187,20 @@ export default function () {
             {
               (formValue.scheme === 'flv' || formValue.encoder === 'h265') && (
                 <Form.Item>
-                  <Button onClick={exampleFlv}>示例flv</Button>
+                  <Button onClick={exampleFlv}>FLV Sample</Button>
                 </Form.Item>
               )
             }
             {
               (formValue.scheme === 'mp4' && formValue.encoder !== 'h265') && (
                 <Form.Item>
-                  <Button onClick={exampleMp4}>示例mp4</Button>
+                  <Button onClick={exampleMp4}>MP4 Sample</Button>
                 </Form.Item>
               )}
             <Form.Item>
-              <Button type="primary" loading={loading} onClick={play}>播放</Button>
+              <Button type="primary" loading={loading} onClick={play}>Play</Button>
               &nbsp;&nbsp;
-              <Form.Reset onClick={reset}>重置</Form.Reset>
+              <Form.Reset onClick={reset}>Reset</Form.Reset>
             </Form.Item>
           </Form>
         </div>

@@ -102,9 +102,10 @@ export interface IPlayer extends IComponent {
   mount(parentEl: Element | string | null): Element;
   unmount(): ParentNode | null;
   pause(): Promise<void>;
-  play(source?: TPlaySource | boolean): Promise<void>;
+  play(): Promise<void>;
   preloadTech(index: number): void;
   requestFullscreen(fullscreenOptions?: FullscreenOptions): Promise<void>;
+  start(source?: TPlaySource): Promise<void>;
   stop(): Promise<void>;
   use(plugin: TPlayerPlugin, ...options: any[]): this;
 }

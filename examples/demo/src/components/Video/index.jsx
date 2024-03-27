@@ -1,4 +1,5 @@
 
+import { Message } from '@alicloud/console-components';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { createPlayer } from 'vd-player';
 import { Html5 } from 'vd-player-tech-html5';
@@ -32,6 +33,9 @@ function Video(props, ref) {
         });
       }
     });
+    player.on('error', (evt) => {
+      Message.error(evt.error.message);
+    });
 
     return () => {
       player.dispose();
@@ -39,12 +43,20 @@ function Video(props, ref) {
   }, []);
   useImperativeHandle(ref, () => {
     return {
-      play(getSource) {
-        playerRef.current.play(getSource);
+      setSource(source) {
+        playerRef.current.source = source;
+      },
+
+      play(source) {
+        playerRef.current.play();
       },
 
       pause() {
         playerRef.current.pause();
+      },
+
+      start(source) {
+        playerRef.current.start(source);
       }
     };
   });
