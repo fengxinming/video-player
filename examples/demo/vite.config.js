@@ -16,17 +16,10 @@ export default defineConfig({
   server: {
     open: true
   },
-  base: '/vd-player/',
+  base: '/video-player/',
   build: {
     outDir: '../../gh-pages',
     emptyOutDir: true,
-    cssCodeSplit: false,
-    rollupOptions: {
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: '[name].[ext]'
-      }
-    }
+    cssCodeSplit: false
   }
 });
