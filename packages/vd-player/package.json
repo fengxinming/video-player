@@ -1,7 +1,7 @@
 {
   "name": "vd-player",
   "version": "1.0.0",
-  "description": "video player.",
+  "description": "A video player.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",

@@ -1,4 +1,4 @@
 # vd-player
 
-> video player.
+> A video player.
 
