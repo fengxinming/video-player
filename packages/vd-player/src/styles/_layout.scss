@@ -1,0 +1,132 @@
+.vd-player {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+
+  color: $player-color;
+  background-color: $player-bg-color;
+  position: relative;
+  padding: 0;
+  font-size: $player-font-size;
+  line-height: 1;
+
+  font-weight: normal;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+
+  &:-moz-full-screen {
+    position: absolute;
+  }
+
+  &:-webkit-full-screen {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  word-break: initial;
+
+  &[tabindex="-1"] {
+    outline: none;
+  }
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: border-box;
+  }
+
+  &.#{$prefix} {
+
+    &-fluid,
+    &-16-9,
+    &-4-3,
+    &-9-16,
+    &-1-1 {
+      width: 100%;
+      max-width: 100%;
+      height: 0;
+    }
+
+    &-16-9 {
+      @include apply-aspect-ratio(16, 9);
+    }
+
+    &-4-3 {
+      @include apply-aspect-ratio(4, 3);
+    }
+
+    &-9-16 {
+      @include apply-aspect-ratio(9, 16);
+    }
+
+    &-1-1 {
+      @include apply-aspect-ratio(1, 1);
+    }
+
+    &-fill {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-fullscreen:not(.#{$prefix}-ios-native-fs) {
+      width: 100% !important;
+      height: 100% !important;
+      padding-top: 0 !important;
+    }
+
+    &-fullscreen.#{$prefix}-user-inactive {
+      cursor: none;
+    }
+  }
+
+  .#{$prefix} {
+    &-tech {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-hidden {
+      display: none !important;
+    }
+
+    &-disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &-offscreen {
+      height: 1px;
+      left: -9999px;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+
+    &-lock-showing {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+}
+
+body.#{$prefix}-full-window {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.#{$prefix}-full-window {
+  .vd-player.#{$prefix}-fullscreen {
+    position: fixed;
+    overflow: hidden;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}

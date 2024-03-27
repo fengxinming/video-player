@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+@import "//at.alicdn.com/t/a/font_4040531_y5nysn75927.css";
+@import "styles/vars";
+@import "styles/mixins";
+@import "styles/layout";
+
+.vd-player {
+  @import "styles/big-play-button";
+  @import "styles/control-bar";
+  @import "styles/error";
+  @import "styles/fullscreen-toggle";
+  @import "styles/live-display";
+  @import "styles/loading-spinner";
+  @import "styles/menu";
+  @import "styles/overlay";
+  @import "styles/play-toggle";
+  @import "styles/progress";
+  @import "styles/rate";
+  @import "styles/stop-control";
+  @import "styles/time";
+  @import "styles/volume";
+}

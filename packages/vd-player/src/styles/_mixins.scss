@@ -1,0 +1,21 @@
+
+@mixin apply-aspect-ratio($width, $height) {
+  padding-top: 100% * math.div($height, $width);
+}
+
+@mixin slider-thumb($size, $bg-color) {
+  position: relative;
+  height: 0;
+  width: 100%;
+  &:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: math.div(-$size, 2);
+    right: math.div(-$size, 2);
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    background-color: $bg-color;
+  }
+}

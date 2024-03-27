@@ -1,0 +1,24 @@
+
+.#{$prefix} {
+  &-menu {
+    background-color: $menu-bg-color;
+    color: $menu-color;
+    border-radius: 0.3em;
+
+    &-item {
+      line-height: $menu-item-height;
+      text-align: center;
+      user-select: none;
+      cursor: pointer;
+
+      &.#{$prefix}-selected, &.#{$prefix}-selected:hover {
+        background-color: $menu-item-selected-bg-color;
+        color: $menu-item-selected-color;
+      }
+
+      &:hover {
+        background-color: $menu-item-hovered-bg-color;
+      }
+    }
+  }
+}

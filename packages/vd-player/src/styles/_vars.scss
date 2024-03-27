@@ -1,0 +1,54 @@
+$prefix: vp;
+
+$player-color: #fff;
+$player-bg-color: #595959;
+$player-font-size: 10px;
+
+$big-play-button-size: 64px;
+$big-play-button-bg-color: rgba(#000000, 0.5);
+
+$control-bar-height: 62px;
+$control-bg-color: linear-gradient(0deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%);
+$control-width: 42px;
+
+$fullscreen-control-font-size: 24px;
+$fullscreen-control-color: rgba(#fff, 0.9);
+
+$live-display-font-size: 14px;
+$live-display-color: #E6E6E6;
+
+$play-control-font-size: 24px;
+$play-control-color: rgba(#fff, 0.9);
+
+$stop-control-font-size: 24px;
+$stop-control-color: rgba(#fff, 0.9);
+
+$time-control-font-size: 14px;
+$time-control-color: rgba(#fff, 0.9);
+$time-control-padding: 8px;
+
+$progress-bar-height: 4px;
+$progress-bar-bg-color: rgba(#73859f, 0.5);
+
+$play-progress-bg-color: #fff;
+
+$slider-thumb-size: $progress-bar-height * 3;
+
+$time-tooltip-color: #fff;
+$time-tooltip-bg-color: rgba(#000, 0.8);
+
+$mute-control-font-size: 24px;
+$mute-control-color: rgba(#fff, 0.9);
+
+$volume-tooltip-color: #fff;
+$volume-tooltip-bg-color: rgba(#000, 0.8);
+
+$rate-control-font-size: 14px;
+$rate-control-color: rgba(#fff, 0.9);
+
+$menu-color: #fff;
+$menu-bg-color: rgba(43, 51, 63, .7);
+$menu-item-height: 30px;
+$menu-item-hovered-bg-color: rgba(115, 133, 159, .5);
+$menu-item-selected-color: #2b333f;
+$menu-item-selected-bg-color: #fff;

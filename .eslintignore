@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+.vscode
+.vite
+
+dist
+logs
+node_modules
+gh-pages

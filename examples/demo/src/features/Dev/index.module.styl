@@ -1,0 +1,30 @@
+
+.layout
+  padding 16px
+  -webkit-overflow-scrolling touch
+
+.content
+  display flex
+
+.left
+  flex 7
+
+.right
+  flex 3
+  padding-left 16px
+
+$MQNarrow = 959px
+$MQMobile = 719px
+$MQMobileNarrow = 419px
+
+// narrow desktop / iPad
+@media (max-width $MQNarrow)
+  .content
+    display block
+    height 200vh
+
+  .left
+    flex none
+
+  .right
+    flex none

@@ -1,0 +1,35 @@
+
+.#{$prefix} {
+  &-big-play-button {
+    height: $big-play-button-size;
+    width: $big-play-button-size;
+    background-color: $big-play-button-bg-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    & > .#{$prefix}-icon-placeholder {
+      color: #fff;
+      font-size: math.div($big-play-button-size, 2);
+    }
+  }
+}
+
+&.#{$prefix}-has-started.#{$prefix}-paused.#{$prefix}-show-big-play-button-on-pause .#{$prefix}-big-play-button {
+  display: block;
+}
+
+&.#{$prefix} {
+  &-controls-disabled .#{$prefix}-big-play-button,
+  &-has-started .#{$prefix}-big-play-button,
+  &-waiting .#{$prefix}-big-play-button,
+  &-using-native-controls .#{$prefix}-big-play-button,
+  &-error .#{$prefix}-big-play-button {
+    display: none;
+  }
+}

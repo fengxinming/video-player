@@ -1,0 +1,23 @@
+
+.#{$prefix} {
+  &-play-control {
+    & > .#{$prefix}-icon-placeholder {
+      color: $play-control-color;
+      font-size: $play-control-font-size;
+    }
+  }
+}
+
+&.#{$prefix}-playing .#{$prefix}-play-control > .icon-bofang {
+  // 播放中显示暂停图标
+  &:before {
+    content: "\e89f";
+  }
+}
+
+&.#{$prefix}-ended .#{$prefix}-play-control > .icon-bofang {
+  // 结束后显示刷新图标
+  &:before {
+    content: "\ed9c";
+  }
+}

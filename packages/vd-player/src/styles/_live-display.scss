@@ -1,0 +1,35 @@
+
+.#{$prefix}-live {
+  &-control {
+    height: 100%;
+    display: none;
+    padding-left: 16px;
+    position: relative;
+    margin: 0 8px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      height: 8px;
+      width: 8px;
+      background-color: #C80000;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+    }
+  }
+
+  &-display {
+    font-weight: 500;
+    font-size: $live-display-font-size;
+    color: $live-display-color;
+    display: flex;
+    align-items: center;
+  }
+}
+
+&.#{$prefix}-live .#{$prefix}-live-control {
+  display: flex;
+}

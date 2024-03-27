@@ -1,0 +1,29 @@
+
+.#{$prefix} {
+  &-time-control {
+    font-size: $time-control-font-size;
+    color: $time-control-color;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+
+  &-current-time {
+    padding-left: $time-control-padding;
+  }
+
+  &-duration {
+    padding-right: $time-control-padding;
+  }
+
+  &-time-divider {
+    padding: 0 math.div($time-control-padding, 2);
+  }
+}
+
+&.#{$prefix}-live .#{$prefix}-time-control,
+&.#{$prefix}-live .#{$prefix}-time-divider {
+  display: none;
+}

@@ -1,0 +1,27 @@
+.#{$prefix} {
+  &-rate-panel {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &.#{$prefix}-hover {
+      .#{$prefix}-rate-menu {
+        display: block;
+      }
+    }
+  }
+
+  &-rate-control {
+    font-size: $rate-control-font-size;
+    color: $rate-control-color;
+  }
+
+  &-rate-menu {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    left: 0;
+    bottom: $control-width;
+    display: none;
+  }
+}

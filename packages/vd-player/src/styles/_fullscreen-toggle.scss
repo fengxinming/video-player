@@ -1,0 +1,16 @@
+
+& .#{$prefix} {
+  &-fullscreen-control {
+    & > .#{$prefix}-icon-placeholder {
+      color: $fullscreen-control-color;
+      font-size: $fullscreen-control-font-size;
+    }
+  }
+}
+
+&.#{$prefix}-fullscreen .#{$prefix}-fullscreen-control .icon-quanping_kuai {
+  // 还原
+  &:before {
+    content: "\ed30";
+  }
+}

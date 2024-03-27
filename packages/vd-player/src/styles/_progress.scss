@@ -1,0 +1,126 @@
+
+// 进度条
+.#{$prefix} {
+  &-progress-panel {
+    height: 100%;
+    flex: auto;
+  }
+
+  &-progress-control {
+    position: absolute;
+    padding: 0 math.div($slider-thumb-size, 2);
+    top: -$progress-bar-height - math.div($progress-bar-height, 2);
+    left: 0;
+    width: 100%;
+
+    &:hover {
+      transform: scale(1, 1.2);
+
+      .#{$prefix}-mouse-display,
+      .#{$prefix}-time-tooltip {
+        display: block;
+        visibility: visible;
+      }
+
+      .#{$prefix}-play-progress {
+        &, &-thumb:before {
+          box-shadow: 0 0 4px $play-progress-bg-color;
+        }
+
+        &-thumb:before {
+          transform: scale(1.2, 1);
+        }
+      }
+    }
+  }
+
+  &-seek-bar {
+    display: block;
+    height: $progress-bar-height * 3;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    transition: all .2s;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      width: 100%;
+      content: '';
+      background-color: $progress-bar-bg-color;
+    }
+
+    &:before, & .#{$prefix}-play-progress {
+      display: block;
+      height: $progress-bar-height;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: $progress-bar-height;
+      left: 0;
+      border-radius: math.div($progress-bar-height, 2);
+    }
+
+    &.disabled {
+      cursor: default;
+    }
+
+    .#{$prefix}-mouse-display .#{$prefix}-time-tooltip {
+      color: $time-tooltip-color;
+      background-color: $time-tooltip-bg-color;
+    }
+  }
+
+  &-play-progress {
+    width: 0;
+    background-color: $play-progress-bg-color;
+    transition: all 0.1s;
+
+    &-thumb {
+      margin-top: math.div($progress-bar-height, 2);
+      z-index: 2;
+      @include slider-thumb($slider-thumb-size, $play-progress-bg-color);
+      
+      &:before {
+        transition: all 0.2s;
+      }
+    }
+  }
+
+  &-time-tooltip {
+    border-radius: 0.3em;
+    background-color: rgba(#fff, 0.8);
+    color: #000;
+    padding: 6px 8px;
+    pointer-events: none;
+    position: absolute;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    top: -3em;
+    visibility: hidden;
+    z-index: 1;
+  }
+}
+
+&.#{$prefix}-live .#{$prefix}-seek-bar {
+  display: none;
+}
+
+&.#{$prefix}-user-inactive {
+  .#{$prefix}-seek-bar {
+    .#{$prefix}-mouse-display {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 1.0s, opacity 1.0s;
+    }
+  }
+}
+
+&.#{$prefix}-stop {
+  .#{$prefix}-progress-control {
+    display: none;
+  }
+  .#{$prefix}-time-control {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+.#{$prefix} {
+  &-stop-control {
+    &>.#{$prefix}-icon-placeholder {
+      color: $stop-control-color;
+      font-size: $stop-control-font-size;
+    }
+  }
+}
+
+&.#{$prefix}-stop .#{$prefix}-stop-control {
+  display: none;
+}
